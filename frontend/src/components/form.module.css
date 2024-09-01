@@ -1,0 +1,73 @@
+/* Container styling */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 16px;
+}
+
+/* Header styling */
+.header {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.header h1 {
+  color: #c53030; /* Red color */
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+/* Form styling */
+.form {
+  max-width: 400px;
+  margin: 32px auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Form group styling */
+.formgroup {
+  position: relative;
+}
+
+/* Input fields styling */
+.formgroup input {
+  width: 100%;
+  padding: 16px;
+  padding-right: 48px;
+  font-size: 14px;
+  border: 1px solid #e2e8f0; /* Light gray border */
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Submit button styling */
+.submitbtn {
+  display: flex;
+  justify-content: center;
+}
+
+.submitbutton {
+  padding: 12px 24px;
+  background-color: #c53030; /* Red background */
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submitbutton:hover {
+  background-color: #9b2c2c; /* Darker red on hover */
+}
+
+.dashboard {
+    display: flex;
+    justify-content: end;
+    margin-top: 40px;
+    margin-right: 40px;
+  }

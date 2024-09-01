@@ -1,0 +1,33 @@
+/* Dashboard.css */
+.dashboard {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.contacts-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.contacts-table th,
+.contacts-table td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.contacts-table th {
+  background-color: #f4f4f4;
+}
+
+.photo-thumbnail {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}

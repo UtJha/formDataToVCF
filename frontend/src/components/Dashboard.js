@@ -1,10 +1,12 @@
 // frontend/src/components/Dashboard.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
+import './dashboard.css';
 function Dashboard() {
   const [data, setData] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
 
   const fetchData = async () => {
     try {
@@ -12,8 +14,11 @@ function Dashboard() {
         `http://localhost:5000/api/data?query=${searchQuery}`
       );
       setData(response.data);
+      setLoading(false);
     } catch (error) {
       alert('Failed to fetch data!');
+      setError('Failed to fetch contacts');
+      setLoading(false);
     }
   };
 
@@ -54,9 +59,18 @@ function Dashboard() {
       alert('Failed to download VCF!');
     }
   };
+  if (loading) {
+    return <p>Loading contacts...</p>;
+  }
+
+  if (error) {
+    return <p>{error}</p>;
+  }
 
   return (
-    <div>
+    <div className="dashboard">
+      <h1>Contact Dashboard</h1>
+      <div>
       <input
         type="text"
         placeholder="Search by name"
@@ -65,22 +79,45 @@ function Dashboard() {
       />
       <button onClick={handleDownload}>Download CSV</button>
       <button onClick={downloadVcf}>Download VCF</button>
-      <table>
+      </div>
+      <table className="contacts-table">
         <thead>
           <tr>
-            <th>ID</th>
             <th>Name</th>
-            <th>Email</th>
-            <th>Message</th>
+            <th>Phone Numbers</th>
+            <th>Email Addresses</th>
+            <th>Address</th>
+            <th>Organization</th>
+            <th>Birthday</th>
+            <th>Notes</th>
+            <th>Social Profiles</th>
+            <th>URL</th>
+            <th>Photo</th>
+            <th>Nickname</th>
+            <th>Anniversary</th>
           </tr>
         </thead>
         <tbody>
-          {data.map((item) => (
-            <tr key={item._id}>
-              <td>{item._id}</td>
-              <td>{item.name}</td>
-              <td>{item.email}</td>
-              <td>{item.message}</td>
+          {data.map((contact, index) => (
+            <tr key={index}>
+              <td>{contact.name}</td>
+              <td>{contact.phoneNumbers}</td>
+              <td>{contact.emailAddresses}</td>
+              <td>{contact.address}</td>
+              <td>{contact.organization}</td>
+              <td>{contact.birthday ? new Date(contact.birthday).toLocaleDateString() : '-'}</td>
+              <td>{contact.notes}</td>
+              <td>{contact.socialProfiles}</td>
+              <td>{contact.url}</td>
+              <td>
+                {contact.photo ? (
+                  <img src={contact.photo} alt={contact.name} className="photo-thumbnail" />
+                ) : (
+                  'No Photo'
+                )}
+              </td>
+              <td>{contact.nickname}</td>
+              <td>{contact.anniversary ? new Date(contact.anniversary).toLocaleDateString() : '-'}</td>
             </tr>
           ))}
         </tbody>

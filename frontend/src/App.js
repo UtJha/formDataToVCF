@@ -2,14 +2,19 @@
 import React from 'react';
 import Form from './components/Form';
 import Dashboard from './components/Dashboard';
-
+import styles from "./components/form.module.css";
 function App() {
   return (
-    <div>
-      <h1>Form Submission and Dashboard</h1>
+    <>
+    <div >
+     {/* <div className={styles.dashboard}>
+      <button type="submit" className={styles.submitbutton}>Dashboard</button>
+    </div> */}
       <Form />
-      <Dashboard />
+
     </div>
+      <Dashboard />
+      </>
   );
 }
 
